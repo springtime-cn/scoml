@@ -23,7 +23,7 @@
 
 ## Usage
 
-### server
+### Server
 #### Python3
 
 ```Python
@@ -61,7 +61,7 @@ int main(){
 ```
 
 
-### client
+### Client
 #### Python3
 
 ```Python
@@ -71,7 +71,7 @@ print(answer)
 ```
 
 
-## C++
+#### C++
 C++11 above
 ```C++
 #include <string>
