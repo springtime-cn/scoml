@@ -31,6 +31,7 @@ from varSocket import ServerSocket
 
 class Handler(ServerSocket):
     def response(self, msg):
+        # You should write your execute code here.
         print("received msg ", msg)
         return msg.upper()
 
