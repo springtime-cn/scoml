@@ -1,5 +1,6 @@
 ## socket communication over multi-languages
 
+You can use it to communication over multi-languages very simply. For example, the communication between Python and C++ when using C++ sending an image to Python classification model and receiving the result. In this case, make a server using Python and using C++ code as a client to send image and receive answer. You can simply using the following code to implement it. 
 
 ### message structure
 ![data](imgs/explain.png)
@@ -8,9 +9,6 @@
 ### example2
 ![data](imgs/example2.png)
 
-<p align="center"> 
-<img src="imgs/data.pdf">
-</p>
 
 1. Simple. both send and received messages are string.
 
