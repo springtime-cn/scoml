@@ -14,6 +14,7 @@
 #include <vector>
 #include <algorithm>
 
+namespace scoml{
 // get sockaddr, IPv4 or IPv6:
 void *get_in_addr(struct sockaddr *sa){
     if (sa->sa_family == AF_INET) {
@@ -332,3 +333,4 @@ public:
     int oriLen;
     int sockfd;
 };
+}
