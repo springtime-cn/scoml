@@ -118,7 +118,8 @@ int varRecv(int handleSocket, std::string &msg, int oriLen=12){
         msgString[i] = *pMsgChar++;
     }
     delete msgChar;
-    msg = msgString;
+    // msg = msgString;
+    std::swap(msg, msgString);
     return 0;
 }
 
