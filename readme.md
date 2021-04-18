@@ -31,7 +31,7 @@ class Handler(ServerSocket):
     def response(self, msg):
         # You should write your execute code here.
         print("received msg ", msg)
-        return msg.upper()
+        return b'abc'
 
 hand = Handler()
 hand.start(12000)
@@ -44,7 +44,7 @@ C++11 above
 #include <iostream>                                                                                             
 #include "varSocket.h"                                                                                          
                                                                                                                 
-std::string ServerSocket::response(std::string &msg){
+std::string scoml::ServerSocket::response(std::string &msg){
     // You should write your execute code here.
     std::string answer += "abc";
     return answer; 
@@ -52,7 +52,7 @@ std::string ServerSocket::response(std::string &msg){
 int main(){ 
     std::string ip("localhost");
     std::string port("12000");
-    ServerSocket server(ip, port);
+    scoml::ServerSocket server(ip, port);
     server.start(); 
     return 0;
 }
@@ -80,7 +80,7 @@ int main(){
 std::string ip("localhost");
 std::string port("12000"); 
 std::string msg("abc"); 
-std::string answer = var_request(ip, port, msg);
+std::string answer = scoml::var_request(ip, port, msg);
 std::cout << answer << std::endl;
 return 0;
 ```
