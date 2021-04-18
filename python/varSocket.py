@@ -25,10 +25,12 @@ def var_send(handle_socket, msg, ori_len=12):
     :param ori_len: 表示数据体长度的数位, 默认值 12
     :return: 0
     """
-    if not (isinstance(msg, str) or isinstance(msg, bytes)):
-        raise RuntimeError("msg data type must be str or bytes")
-    elif isinstance(msg, str):
-        msg = bytes(msg, 'utf-8')
+    # if not (isinstance(msg, str) or isinstance(msg, bytes)):
+    #     raise RuntimeError("msg data type must be str or bytes")
+    # elif isinstance(msg, str):
+    #     msg = bytes(msg, 'utf-8')
+    if not isinstance(msg, bytes):
+        raise RuntimeError("msg data type must be bytes")
     if len(msg) > get_max_num(ori_len):
         raise RuntimeError("msg data exceeds the length which ori_len can describes. "
                            "You should increase the ori_len parameter in both server and client.")
@@ -53,7 +55,7 @@ def var_receive(handle_socket, ori_len=12):
     描述: 可变长度 socket 发送函数 
     :param handle_socket: 指用哪个 socket 来接收数据
     :param ori_len: 表示数据体长度的数位, 默认值 12
-    :return: uft-8 编码字符串
+    :return: bytes
     """
     ori_chunks = []
     ori_recd = 0
@@ -76,7 +78,7 @@ def var_receive(handle_socket, ori_len=12):
         if msg_recd > get_max_num(ori_len):
             raise RuntimeError("received data exceeds the length which ori_len can describes. "
                                "You should increase the ori_len parameter in both server and client.")
-    return str(b''.join(chunks), 'utf-8')
+    return b''.join(chunks)
 
 
 class ServerSocket:
@@ -89,8 +91,8 @@ class ServerSocket:
     def response(self, msg):
         """
         execute function
-        :param msg: received msg of str type
-        :return: response msg of str type
+        :param msg: received msg of bytes type
+        :return: response msg of bytes type
         """
         raise NotImplementedError("You should write your execute code here.")
 
@@ -106,7 +108,8 @@ class ServerSocket:
                 answer = self.response(message)
                 if answer is None:
                     continue
-                answer = bytes(answer, 'utf-8')
+                if not isinstance(answer, bytes):
+                    raise RuntimeError("answer is not bytes.")
                 var_send(handle_socket, answer, ori_len)
                 handle_socket.close()
             except Exception:
