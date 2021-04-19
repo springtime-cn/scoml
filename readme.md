@@ -25,9 +25,9 @@ You can use it to communication over multi-languages very simply. For example, t
 #### Python3
 
 ```Python
-from varSocket import ServerSocket
+from scomlVarSocket import ScomlServerSocket
 
-class Handler(ServerSocket):
+class Handler(ScomlServerSocket):
     def response(self, msg):
         # You should write your execute code here.
         print("received msg ", msg)
@@ -63,8 +63,8 @@ int main(){
 #### Python3
 
 ```Python
-from varSocket import var_request
-answer = var_request("localhost", 12000, message= "hello world")
+from scomlVarSocket import scoml_var_request
+answer = scoml_var_request("localhost", 12000, message= "hello world")
 print(answer)
 ```
 
