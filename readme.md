@@ -10,9 +10,9 @@ You can use it to communication over multi-languages very simply. For example, t
 ![data](imgs/example2.png)
 
 
-1. Simple. both send and received messages are string.
+1. Simple. both send and received messages are bytes.
 
-2. default maximal 999999999999 Bytes message body, that is maximum 931.3GB in one send or receive. You also can increase the ori_len(oriLen) parameter to support more data transfer at a time.
+2. Default maximal 999999999999 Bytes message body, that is maximum 931.3GB in one send or receive. You also can increase the ori_len(oriLen) parameter to support more data transfer at a time.
 
 3. Only tested on Ubuntu18.04, and it should be run well on unix-like systems.
 
