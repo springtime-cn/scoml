@@ -14,7 +14,7 @@ You can use it to communication over multi-languages very simply. For example, t
 
 2. default maximal 999999999999 Bytes message body, that is maximum 931.3GB in one send or receive. You also can increase the ori_len(oriLen) parameter to support more data transfer at a time.
 
-3. Even tested on Ubuntu18.04, and it should be run well on unix-like systems.
+3. Only tested on Ubuntu18.04, and it should be run well on unix-like systems.
 
 4. Code on other language is comming. 
 
@@ -42,7 +42,7 @@ C++11 above
 ```C++
 #include <string>                                                                                               
 #include <iostream>                                                                                             
-#include "varSocket.h"                                                                                          
+#include"scomlVarSocket.h"                                                                                          
                                                                                                                 
 std::string scoml::ServerSocket::response(std::string &msg){
     // You should write your execute code here.
@@ -74,7 +74,7 @@ C++11 above
 ```C++
 #include <string>
 #include <iostream>
-#include "varSocket.h"
+#include "scomlVarSocket.h"
 
 int main(){
 std::string ip("localhost");
