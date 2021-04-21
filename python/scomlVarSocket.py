@@ -21,8 +21,8 @@ def scoml_var_send(handle_socket, msg, ori_len=12):
     """
     描述: 可变长度 socket 接收函数
     :param handle_socket: 指用哪个 socket 来发送数据
-    :param msg: utf-8字符串 或 字节数据
-    :param ori_len: 表示数据体长度的数位, 默认值 12
+    :param msg: bytes, or bytes from str with encoding ascii
+    :param ori_len: default 12
     :return: 0
     """
     # if not (isinstance(msg, str) or isinstance(msg, bytes)):
@@ -35,7 +35,7 @@ def scoml_var_send(handle_socket, msg, ori_len=12):
         raise RuntimeError("msg data exceeds the length which ori_len can describes. "
                            "You should increase the ori_len parameter in both server and client.")
     ori_sent = 0
-    ori_msg = bytes(str(len(msg)).zfill(ori_len), 'utf-8')
+    ori_msg = bytes(str(len(msg)).zfill(ori_len), 'ascii')
     while ori_sent < ori_len:
         sent = handle_socket.send(ori_msg[ori_sent:])
         if sent == 0:
@@ -65,7 +65,7 @@ def scoml_var_receive(handle_socket, ori_len=12):
             raise RuntimeError("socket connection broken")
         ori_chunks.append(recd)
         ori_recd += len(recd)
-    msg_len = int(b''.join(ori_chunks).decode('utf-8'))
+    msg_len = int(b''.join(ori_chunks).decode('ascii'))
 
     chunks = []
     msg_recd = 0
@@ -119,6 +119,16 @@ class ScomlServerSocket:
 
 
 def scoml_var_request(ip, port, msg, ori_len=12):
+    """
+
+    :param ip: str
+    :param port:
+    :param msg: bytes, or bytes from str with encoding utf-8
+    :param ori_len:
+    :return:
+    """
+    if not isinstance(msg, bytes):
+        return "msg data type must be bytes"
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.connect((ip, port))
     scoml_var_send(sock, msg)
